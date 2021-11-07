@@ -1,0 +1,130 @@
+<%- include('../../partials/admin/head.ejs') %> 
+    <link rel="stylesheet" type="text/css" href="/css/register.css">
+    <title>Administrativo - Novo Pet</title>
+    <%- include('../../partials/admin/head2.ejs') %> 
+<body>
+    <%- include('../../partials/admin/nav.ejs') %> 
+    <div id="container">
+        <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+        <div class="card m-3">
+            <div class="card-header">
+                <h6 class="display-6 text-center">CADASTRO DE PETs</h6>
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </symbol>
+                </svg>
+                <div class="alert alert-success d-flex align-items-center text-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                    <div class="text-center">
+                      <h6>LEMBRE-SE DE PREENCHER COM CUIDADO TODAS AS INFORMAÇÕES!</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <fieldset>
+                    <form method="post" action="/admin/save">
+                        <div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" name="nameFancy" placeholder=" " class="form-control" required>
+                                    <label>Apelido</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" name="race" placeholder=" " class="form-control" required>
+                                    <label>Raça</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br><div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" name="colorBody" placeholder=" " class="form-control" required>
+                                    <label>Cor do Pelo</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" name="cityOrigin" placeholder=" " class="form-control" required>
+                                    <label>Cidade de Origem</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br><div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="number" name="height" placeholder=" " class="form-control" required>
+                                    <label>Altura (CM)</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="number" name="weight" placeholder=" " class="form-control" required>
+                                    <label>Peso (KG)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br><div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="date" name="dateBirth" placeholder=" " class="form-control" required>
+                                    <label>Data de Nascimento</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="number" name="age" placeholder=" " class="form-control" required>
+                                    <label>Idade (ANOS)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br><div class="row g-3">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="castrated" required>
+                                        <option selected disabled>--  --</option>
+                                        <option value='1'>Sim</option>
+                                        <option value='2'>Não</option>
+                                    </select>
+                                    <label for="floatingSelectGrid">O PET É CASTRADO:</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="health" required>
+                                        <option selected disabled>--  --</option>
+                                        <option value='1'>Sim</option>
+                                        <option value='2'>Não</option>
+                                    </select>
+                                    <label for="floatingSelectGrid">O PET GOZA DE BOA SAÚDE:</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="sex" required>
+                                        <option selected disabled>--  --</option>
+                                        <option value='1'>Masculino</option>
+                                        <option value='2'>Feminino</option>
+                                    </select>
+                                    <label for="floatingSelectGrid">O SEXO DO PET:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br><div class="form-control">
+                            <label>Descreva o PET com suas características: </label>
+                            <textarea class="form-control" rows="5" name="note" required></textarea>
+                        </div>
+                        <br><div class="d-grid col-6 gap-2 mx-auto">
+                            <button class="btn btn-success">Cadastrar</button>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../partials/admin/footer.ejs') %> 
