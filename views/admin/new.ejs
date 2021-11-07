@@ -23,7 +23,7 @@
             </div>
             <div class="card-body">
                 <fieldset>
-                    <form method="post" action="/admin/save">
+                    <form method="post" action="/admin/save" onsubmit="confirmPet()">
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating">
@@ -86,7 +86,7 @@
                                     <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="castrated" required>
                                         <option selected disabled>--  --</option>
                                         <option value='1'>Sim</option>
-                                        <option value='2'>Não</option>
+                                        <option value='0'>Não</option>
                                     </select>
                                     <label for="floatingSelectGrid">O PET É CASTRADO:</label>
                                 </div>
@@ -97,7 +97,7 @@
                                     <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="health" required>
                                         <option selected disabled>--  --</option>
                                         <option value='1'>Sim</option>
-                                        <option value='2'>Não</option>
+                                        <option value='0'>Não</option>
                                     </select>
                                     <label for="floatingSelectGrid">O PET GOZA DE BOA SAÚDE:</label>
                                 </div>
@@ -108,7 +108,7 @@
                                     <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="sex" required>
                                         <option selected disabled>--  --</option>
                                         <option value='1'>Masculino</option>
-                                        <option value='2'>Feminino</option>
+                                        <option value='0'>Feminino</option>
                                     </select>
                                     <label for="floatingSelectGrid">O SEXO DO PET:</label>
                                 </div>

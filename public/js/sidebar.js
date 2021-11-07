@@ -20,3 +20,17 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("container").style.marginLeft = "0";
 }
+
+// ------------------------------------------ EVENTOS DE CADASTROS DE PETS
+var confirmPet = () => {
+  alert("Pet Cadastrado com sucesso!");
+};
+
+var confirmDelete = (event) => {
+  var option = confirm('EXCLUIR');
+  if (option) {
+    
+  }else{
+    event.preventDefault();
+  }
+};

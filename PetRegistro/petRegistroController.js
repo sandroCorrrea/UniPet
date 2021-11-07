@@ -28,12 +28,42 @@ router.post('/admin/save' , (req , res)=>{
       sex       : sex,
       note      : note,
    }).then(() => {
-      res.json("Dados criados com sucesso!");
+      res.redirect('/admin/new');
    }).catch(erro => {
       console.log(erro);
    });
 });
 
+router.get('/admin/show', (req, res) => {
 
+   Pet.findAll({
+      order:[['id','DESC']]
+   }).then(pets => {
+      res.render('admin/show', {
+         pets: pets,
+      })
+   }).catch(erro => {
+      console.log(erro);
+   });
+});
+
+router.post('/admin/delete', (req, res) => {
+   var {id} = req.body;
+
+   if (!isNaN(id)) {
+
+      Pet.destroy({
+         where:{id: id}
+      }).then(() => {
+         res.redirect('/admin/show');
+      }).catch(erro => {
+         console.log(erro);
+      });
+
+   }else{
+      res.redirect('/admin/show');
+   }
+
+});
 
 module.exports = router;

@@ -1,0 +1,57 @@
+<%- include('../../partials/admin/head.ejs') %> 
+    <link rel="stylesheet" type="text/css" href="/css/register.css">
+    <title>Administrativo - PETs</title>
+    <%- include('../../partials/admin/head2.ejs') %> 
+<body>
+    <%- include('../../partials/admin/nav.ejs') %> 
+    <div id="container">
+        <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+        <table class="table table-success mt-5">
+            <thead>
+                <tr>
+                    <th>Código/PET      </th>
+                    <th>Apelido         </th>
+                    <th>Raça            </th>
+                    <th>Sexo            </th>
+                    <th>Cor             </th>
+                    <th>Cidade de Origem</th>
+                    <th>Ações           </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% pets.forEach(pet => { %>
+                    <tr>
+                        <th><%= pet.id         %></th>
+                        <th><%= pet.nameFancy  %></th>
+                        <th><%= pet.race       %></th>
+                        <!-- VALIDAÇÃO DO SEXO DO PET -->
+                        
+                        <% if(pet.sex == true){ %>
+                            <th>Masculino</th>
+                        <% }else{               %>
+                            <th>Feminino</th>
+                        <% }                    %> 
+
+                        <!-- ------------------------ -->
+                        <th><%= pet.colorBody  %></th>
+                        <th><%= pet.cityOrigin %></th>
+                        <th>
+                            <form style="display: inline;" method="post" action="/admin/delete" onsubmit="confirmDelete(event)">
+                                <button class="btn btn-danger" name="id" value="<%= pet.id %>">
+                                    <i class="bi bi-x-square"></i>
+                                </button>
+                            </form>
+                            <button class="btn btn-warning">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </th>
+                    </tr>
+                <% }); %> 
+            </tbody>
+        </table>
+    </div>
+</body>
+<%- include('../../partials/admin/footer.ejs') %>
