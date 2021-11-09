@@ -27,7 +27,7 @@ const Pet = database.define('pets', {
         allowNull: false,
     },
     dateBirth:{
-        type: sequelize.DATE,
+        type: sequelize.DATEONLY,
         allowNull: false,
     },
     age:{

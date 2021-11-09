@@ -34,3 +34,7 @@ var confirmDelete = (event) => {
     event.preventDefault();
   }
 };
+
+var editPet = () => {
+  alert("Alterações Feitas com sucesso!");
+}
