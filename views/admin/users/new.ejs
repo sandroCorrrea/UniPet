@@ -1,0 +1,162 @@
+<%- include('../../../partials/admin/head.ejs') %> 
+    <link rel="stylesheet" type="text/css" href="/css/register.css">
+    <title>Administrativo - Novo Admin</title>
+    <link rel = "stylesheet" type = "text/css" href = "/css/cadastroAdmin.css">
+    <%- include('../../../partials/admin/head2.ejs') %> 
+<body>
+    <%- include('../../../partials/admin/nav.ejs') %> 
+    <div id="container">
+        <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+        <div class="card m-5">
+            <div class="card-header">
+                <h6 class="display-6 text-center" style = "font-size:2.5em;">CADASTRO DE ADMINS</h6>
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </symbol>
+                </svg>
+                <div class="alert alert-success d-flex align-items-center text-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                    <div class="text-center">
+                      <h6>LEMBRE-SE DE PREENCHER COM CUIDADO TODAS AS INFORMAÇÕES!</h6>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <fieldset>
+                        <form method="post" action="/admin/userAdmin/save" onsubmit="saveAdmin()">
+                            <div class="row g-2">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" name="nameAdmin" placeholder=" " class="form-control" required>
+                                        <label>Nome</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" id="cpf" name="cpf" placeholder=" " class="form-control" required>
+                                        <label>CPF</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row g-3">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="number" name="cep" placeholder=" " class="form-control" id="cep" size="10" maxlength="9" onblur="pesquisacep(this.value);" required>
+                                        <label>CEP</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" name="rua" placeholder=" " class="form-control" id="rua" size="60" id="bairro" size="40" required>
+                                        <label>Rua</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" name="bairro" id="bairro" size="40" placeholder=" " class="form-control" required>
+                                        <label>Bairro</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row g-2">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" name="cidade" id="cidade" size="40" placeholder=" " class="form-control" required>
+                                        <label>Cidade</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" id="uf" name="uf" placeholder=" " size="2" class="form-control" required>
+                                        <label>Estado</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br><div class="row g-2">
+                                <div class="form-floating">
+                                    <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="sex" required>
+                                        <option selected disabled>--  --</option>
+                                        <option value='1'>Masculino</option>
+                                        <option value='0'>Feminino</option>
+                                    </select>
+                                    <label for="floatingSelectGrid">SEXO</label>
+                                </div>
+                            </div>
+                            <br><div class="row g-3">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="date" name="dateBirth" placeholder=" " class="form-control" required>
+                                        <label>Data de Nascimento</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            <input type="text" name="profession" placeholder=" " class="form-control" required>
+                                            <label>Profissão</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class = "row g-3">
+                                <div class = "col-md">
+                                    <div class = "form-floating">
+                                        <input type = "text" name = "acess" placeholder=" " class="form-control" required>
+                                        <label>Login de Admin</label>
+                                    </div>
+                                </div>
+
+                                <div class = "col-md">
+                                    <div class = "form-floating">
+                                        <input type = "password" name = "passwordAdmin" placeholder=" " class="form-control" required>
+                                        <label>Senha</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="emailAdmin" placeholder=" " name="email" required>
+                                <label for="emailAdmin" class="form-label">Email</label>
+                            </div>
+
+                            <br>
+                            <div class = "row g-3">
+                                <div class = "col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="work" required>
+                                            <option selected value="" disabled>Selecione</option>
+                                            <option value="assistente">Assistente</option>
+                                            <option value="criador">Criador</option>
+                                            <option value="desenvolvedor">Desenvolvedor</option>
+                                            <option value="suporte">Suporte</option>
+                                        </select>
+                                        <label for="floatingSelectGrid">Função no site</label>
+                                    </div>
+                                </div>
+                                <div class = "col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="status" required>
+                                            <option value='1'>Ativo</option>
+                                            <option value='0'>Inativo</option>
+                                        </select>
+                                        <label for="floatingSelectGrid">Status</label>
+                                    </div>
+                                </div>  
+                            </div>    
+                            <br><div class="d-grid col-6 gap-2 mx-auto" style = "width:20%;">
+                                <button class="btn btn-success">Cadastrar</button>
+                            </div>
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../../partials/admin/footer.ejs') %> 

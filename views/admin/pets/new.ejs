@@ -118,7 +118,7 @@
                             <label>Descreva o PET com suas características: </label>
                             <textarea class="form-control" rows="5" name="note" required></textarea>
                         </div>
-                        <br><div class="d-grid col-6 gap-2 mx-auto">
+                        <br><div class="d-grid col-6 gap-2 mx-auto" style = "width:20%;">
                             <button class="btn btn-success">Cadastrar</button>
                         </div>
                     </form>
@@ -126,5 +126,10 @@
             </div>
         </div>
     </div>
+    <script>
+        $(function() {
+            $("#cpf").mask('000.000.000-00')
+        });
+    </script>
 </body>
 <%- include('../../../partials/admin/footer.ejs') %> 

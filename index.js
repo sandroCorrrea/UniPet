@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 // ------------------------ CONEXÕES USADAS (BD E ROTAS)
 const database       = require('./database/database');
 const mainController = require('./PetRegistro/petRegistroController');
+const adminController= require('./UserAdmin/adminControllers');
 // ------------------------------------------------
 
 // ------------------------ CONFIGURAÇÕES DAS BIBLIOTECAS
@@ -28,6 +29,7 @@ database.authenticate()
 
 // ------------------------ IMPORTANDO ROTAS
 app.use('/', mainController);
+app.use('/', adminController);
 // ------------------------------------------------
 
 
