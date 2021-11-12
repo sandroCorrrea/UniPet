@@ -1,0 +1,148 @@
+<%- include('../../../partials/admin/head.ejs') %> 
+    <link rel="stylesheet" type="text/css" href="/css/adminShow.css">
+    <title>Administrativo - Admin</title>
+    <%- include('../../../partials/admin/head2.ejs') %> 
+<body>
+    <%- include('../../../partials/admin/nav.ejs') %> 
+    <div id="container">
+        <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+
+        <div class="card mt-5">
+            <div class="card-header">
+                <h6 class="display-6 text-center text-light">Administradores</h6>
+            </div>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div> 
+                <table class="table table-success table-bordered mt-5">
+                    <thead>
+                        <tr>
+                            <th>Código/Admin    </th>
+                            <th>Nome            </th>
+                            <th>Acesso          </th>
+                            <th>Função          </th>
+                            <th>Status          </th>
+                            <th>Ações           </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% admins.forEach(admin => { %>
+                            <tr>
+                                <th><%= admin.id        %> </th>
+                                <th><%= admin.nameAdmin %> </th>
+                                <th><%= admin.acess     %> </th>
+                                <th><%= admin.work      %> </th>
+
+                                <!-- VALIDAÇÃO DE ADMINISTRADORES ATIVOS OU NÃO -->
+                                <% if(admin.status == true){ %>
+                                    <th>Ativo</th>
+                                <% }else{ %>
+                                    <th>Inativo</th>
+                                <%} %>
+                                <!----------------------- FIM DA VALIDAÇÃO ---------------------->
+                                <th>
+                                    <form style="display: inline;" method="post" action="/admin/adminUser/delete" onsubmit="confirmDelete(event)">
+                                        <button class="btn btn-danger" name="id" value="<%= admin.id %>">
+                                            <i class="bi bi-x-square"></i>
+                                        </button>
+                                    </form>
+                                    <a class="btn btn-warning" name="id" value="<%= admin.id %>" href="/admin/adminUser/edit/<%=admin.id%>">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=admin.id%>">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <!-- Exibição de Todas as Informações -->
+                                    <div class="modal fade" id="staticBackdrop<%=admin.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title text-success display-6" id="staticBackdropLabel">Dados do Administrador</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="list-group">
+                                                    <a href="#" class="list-group-item list-group-item-action active text-center" aria-current="true">
+                                                        <%=admin.nameAdmin%>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action">
+                                                        <pre   >Código             :     <%=admin.id%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action">
+                                                        <pre   >CPF                :     <%=admin.cpf%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >CEP                :     <%=admin.cep%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Rua                :     <%=admin.rua%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Bairro             :     <%=admin.bairro%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Cidade             :     <%=admin.cidade%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Estado             :     <%=admin.uf%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <% if (admin.sex == true){ %>
+                                                            <pre   >Sexo               :     Masculino</pre>
+                                                        <% }else{ %>
+                                                            <pre   >Sexo               :     Feminino</pre>
+                                                        <% } %> 
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Data de Nascimento :     <%=admin.dateBirth%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Profissão          :     <%=admin.profession%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Acesso             :     <%=admin.acess%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >E-mail             :     <%=admin.email%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <% if(admin.work == "assistente"){ %>
+                                                            <pre   >Função             :     Assistente</pre>
+                                                        <% }else if(admin.work == "criador"){ %>
+                                                            <pre   >Função             :     Criador</pre>
+                                                        <% }else if (admin.work == "desenvolvedor"){ %>
+                                                            <pre   >Função             :     Desenvolvedor</pre>
+                                                        <% }else{ %>
+                                                            <pre   >Função             :     Suporte</pre>
+                                                        <% } %> 
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <% if (admin.status == true){%>
+                                                            <pre   >Status             :     Ativo</pre>
+                                                        <%}else{ %>
+                                                            <pre   >Status             :     Inativo</pre>
+                                                        <% } %> 
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                                <i class="bi bi-x-circle"></i>
+                                            </button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>  
+                                </th>
+                            </tr>
+                        <% }); %> 
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../../partials/admin/footer.ejs') %>

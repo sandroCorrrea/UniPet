@@ -16,7 +16,7 @@
                     <span class="input-group-text" id="basic-addon1">@</span>
                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
-                <table class="table table-success mt-5">
+                <table class="table table-success table-bordered mt-5">
                     <thead>
                         <tr>
                             <th>Código/PET      </th>
@@ -54,9 +54,80 @@
                                     <a class="btn btn-warning" name="id" value="<%=pet.id%>" href="/admin/edit/<%=pet.id%>">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=pet.id%>">
                                         <i class="bi bi-eye"></i>
-                                    </a>  
+                                    </a>
+                                    <!-- Exibição de Todos os dados do PET -->
+                                    <div class="modal fade" id="staticBackdrop<%=pet.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title display-6 text-success" id="staticBackdropLabel">Dados do Pet</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="list-group">
+                                                    <a href="#" class="list-group-item list-group-item-action active text-center" aria-current="true">
+                                                        <%=pet.nameFancy%>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action">
+                                                        <pre   >Código                  :     <%=pet.id%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action">
+                                                        <pre   >Raça                    :     <%=pet.race%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Cor do Pelo             :     <%=pet.colorBody%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Cidade de Origem        :     <%=pet.cityOrigin%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Altura                  :     <%=pet.height%> (cm)</pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Peso                    :     <%=pet.weight%> (kg)</pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Data de Nascimento      :     <%=pet.dateBirth%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Idade                   :     <%=pet.age%></pre>
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <% if(pet.castrated == true){ %>
+                                                            <pre   >Castrado                :     Sim</pre>
+                                                        <% }else{ %>
+                                                            <pre   >Castrado                :     Não</pre>
+                                                        <% } %> 
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <% if(pet.health == true){ %>
+                                                            <pre   >Boa Saúde               :     Sim</pre>
+                                                        <% }else{ %>
+                                                            <pre   >Boa Saúde               :     Não</pre>
+                                                        <% } %> 
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <% if(pet.sex == true){ %>
+                                                            <pre   >Sexo                    :     Masculino</pre>
+                                                        <% }else{ %>
+                                                            <pre   >Sexo                    :     Feminino</pre>
+                                                        <% } %> 
+                                                    </a>
+                                                    <a href="#" class="list-group-item list-group-item-action ">
+                                                        <pre   >Características         :     <%=pet.note%></pre>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                                <i class="bi bi-x-circle"></i>
+                                            </button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>  
                                 </th>
                             </tr>
                         <% }); %> 
