@@ -1,0 +1,50 @@
+<%- include('../../../partials/admin/head.ejs') %> 
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <title>Administrativo - Postagem</title>
+    <%- include('../../../partials/admin/head2.ejs') %> 
+<body>
+    <%- include('../../../partials/admin/nav.ejs') %> 
+    <div id="container">
+        <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+        <div class="card m-3">
+            <div class="card-header">
+                <h6 class="display-6 text-center">Realizar Postagem</h6>
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </symbol>
+                </svg>
+                <div class="alert alert-success d-flex align-items-center text-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                    <div class="text-center">
+                      <h6>LEMBRE-SE DE TOMAR CUIDADO COM A POSTAGEM, UMA VEZ QUE O USUÁRIO A VERÁ !</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="post" action="/admin/save/post" onsubmit="confirmPost()">
+                    <div class="form-floating">
+                        <input type="text" name="title" class="form-control" placeholder=" " required>
+                        <label>Título da Postagem</label>
+                    </div>
+                    <br>
+                    <textarea name="body" class="form-control" id="body"></textarea>
+                    <br><div class="gap-2 col-6 mx-auto d-grid">
+                        <button class="btn btn-success">Postar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../../partials/admin/footer.ejs') %> 
+<script type="text/javascript" src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: '#body',
+        language: 'pt_BR',
+        plugins:   [
+            'advlist anchor autolink autoresize autosave bbcode charmap code codesample colorpicker contextmenu directionality emoticons fullpage fullscreen help hr image imagetools importcss insertdatetime legacyoutput link lists media nonbreaking noneditable pagebreak paste preview print quickbars save searchreplace spellchecker tabfocus table template textcolor textpattern toc visualblocks visualchars wordcount'
+        ]
+    });
+</script>

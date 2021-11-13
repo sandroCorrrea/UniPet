@@ -26,6 +26,10 @@ var confirmPet = () => {
   alert("Pet Cadastrado com sucesso!");
 };
 
+var confirmPost = () =>{
+  alert("Postagem realizada com sucesso!");
+}
+
 var confirmDelete = (event) => {
   var option = confirm('EXCLUIR');
   if (option) {

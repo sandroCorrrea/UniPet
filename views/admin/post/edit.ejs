@@ -1,0 +1,52 @@
+<%- include('../../../partials/admin/head.ejs') %> 
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <title>Administrativo - Postagem</title>
+    <%- include('../../../partials/admin/head2.ejs') %> 
+<body>
+    <%- include('../../../partials/admin/nav.ejs') %> 
+    <div id="container">
+        <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+        <div class="card m-3">
+            <div class="card-header">
+                <h6 class="display-6 text-center">Atualizar Postagem</h6>
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </symbol>
+                </svg>
+                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                    <div>
+                        <h6 style="color: black;">ATUALIZE AS INFORMAÇÕES COM CUIDADO!</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="post" action="/admin/edit/post" onsubmit="editPet()">
+                    <div class="form-floating">
+                        <input type="text" name="title" class="form-control" placeholder=" " value="<%=posts.title%> " required>
+                        <label>Título da Postagem</label>
+                    </div>
+                    <br>
+                    <textarea name="body" class="form-control" id="body">
+                        <%=posts.body%>
+                    </textarea>
+                    <br><div class="gap-2 col-6 mx-auto d-grid">
+                        <button class="btn btn-warning" name="id" value="<%=posts.id%>">Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../../partials/admin/footer.ejs') %> 
+<script type="text/javascript" src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: '#body',
+        language: 'pt_BR',
+        plugins:   [
+            'advlist anchor autolink autoresize autosave bbcode charmap code codesample colorpicker contextmenu directionality emoticons fullpage fullscreen help hr image imagetools importcss insertdatetime legacyoutput link lists media nonbreaking noneditable pagebreak paste preview print quickbars save searchreplace spellchecker tabfocus table template textcolor textpattern toc visualblocks visualchars wordcount'
+        ]
+    });
+</script>

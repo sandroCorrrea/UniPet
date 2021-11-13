@@ -1,0 +1,50 @@
+<%- include('../../../partials/admin/head.ejs') %> 
+    <link rel="stylesheet" type="text/css" href="/css/adminShow.css">
+    <title>Administrativo - PETs</title>
+    <%- include('../../../partials/admin/head2.ejs') %> 
+<body>
+    <%- include('../../../partials/admin/nav.ejs') %> 
+    <div id="container">
+        <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+
+        <div class="card mt-5">
+            <div class="card-header">
+                <h6 class="display-6 text-center text-light">Postagens Feitas</h6>
+            </div>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div> 
+                <table class="table table-success table-bordered mt-5">
+                    <thead>
+                        <tr>
+                            <th>Código          </th>
+                            <th>Título          </th>
+                            <th>Ações           </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% posts.forEach(post => { %>
+                            <tr>
+                                <th><%= post.id    %> </th>
+                                <th><%= post.title %> </th>
+                                <th>
+                                    <form method="post" action="/admin/delete/post" style="display: inline;" onsubmit="confirmDelete(event)">
+                                        <button class="btn btn-danger" value="<%= post.id%>" name="id">
+                                            <i class="bi bi-x-square"></i>
+                                        </button>
+                                    </form>
+                                    <a class="btn btn-warning" name="id" value="<%=post.id%>" href="/admin/post/edit/<%=post.id%>">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                </th>
+                            </tr>
+                        <% }); %> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../../partials/admin/footer.ejs') %>
