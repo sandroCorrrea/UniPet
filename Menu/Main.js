@@ -1,13 +1,16 @@
 const sequelize = require('sequelize');
-const database  = require('../database/database');
+const connection= require('../database/database');
 
-const Admin = database.define('admins', {
-
-    nameAdmin:{
+const User = connection.define('usuarios', {
+    primaryName:{
         type: sequelize.STRING,
         allowNull: false,
     },
-    cpf:{
+    secondaryName:{
+        type: sequelize.STRING,
+        allowNull: false,
+    },
+    email:{
         type: sequelize.STRING,
         allowNull: false,
     },
@@ -31,6 +34,14 @@ const Admin = database.define('admins', {
         type: sequelize.STRING,
         allowNull: false,
     },
+    cpf:{
+        type: sequelize.STRING,
+        allowNull: false,
+    },
+    password:{
+        type: sequelize.STRING,
+        allowNull: false,
+    },
     sex:{
         type: sequelize.BOOLEAN,
         allowNull: false,
@@ -39,32 +50,8 @@ const Admin = database.define('admins', {
         type: sequelize.DATEONLY,
         allowNull: false,
     },
-    profession:{
-        type: sequelize.STRING,
-        allowNull: false,
-    },
-    acess:{
-        type: sequelize.STRING,
-        allowNull: false,
-    },
-    passwordAdmin:{
-        type: sequelize.STRING,
-        allowNull: false,
-    },
-    email:{
-        type: sequelize.STRING,
-        allowNull: false,
-    },
-    work:{
-        type: sequelize.STRING,
-        allowNull: false,
-    },
-    status:{
-        type: sequelize.BOOLEAN,
-        allowNull: false,
-    },
 });
 
-Admin.sync({force: false});
+User.sync({force: false});
 
-module.exports = Admin;
+module.exports = User;

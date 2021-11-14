@@ -1,0 +1,75 @@
+<%- include('../../../partials/users/head.ejs') %>
+<title>UniPet - Ajuda</title>
+<link rel="stylesheet" href="">
+<%- include('../../../partials/users/head2.ejs') %>
+<body>
+    <%- include('../../../partials/users/nav.ejs') %>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="w-50">
+                <img src="/img/petss.jpg" alt="pet" style="margin-left:20vh; margin-top: 15vh;">
+            </div>
+            <div class="w-50">
+                <div class="card m-3">
+                    <div class="card-header">
+                        <h6 class="display-6 text-center">RETIRE SUA DÚVIDA</h6>
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                            </symbol>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <fieldset>
+                            <form method="post" action="/admin/save">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            <input type="text" name="nameFancy" placeholder=" " class="form-control" required>
+                                            <label>Nome Completo</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><div class="row">
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            <input type="text" name="cityOrigin" placeholder=" " class="form-control" required>
+                                            <label>E-mail</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><div class="row">
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                <option selected>Burocracias</option>
+                                                <option value="1">Contatos</option>
+                                                <option value="2">Reclamações</option>
+                                                <option value="3">Sugestões</option>
+                                            </select>
+                                            <label for="floatingSelect">Assunto</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><div class="form-control">
+                                    <label for="msg">Mensagem: </label>
+                                    <textarea id="msg" class="form-control" rows="5" name="note" required></textarea>
+                                </div>
+                                <br>
+                                <label>
+                                    <input type="checkbox" id='checkOpcao' checked> Gostaria de receber uma copia por E-mail?
+                                </label>
+                                <br>
+    
+                                <br><div class="d-grid col-6 gap-2 mx-auto">
+                                    <button class="btn btn-success">Enviar</button>
+                                </div>
+                            </form>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../../partials/users/footer.ejs') %>

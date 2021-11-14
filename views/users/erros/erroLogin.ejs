@@ -1,0 +1,28 @@
+<%- include('../../../partials/users/head.ejs') %>
+  <title>UniPet - Login</title>
+  <link rel="stylesheet" href="/css/erro.css">
+  <%- include('../../../partials/users/head2.ejs') %>
+    <body>
+      <%- include('../../../partials/users/nav.ejs') %>
+      <main class="form-signin mt-5 text-center">
+        <img class="mb-4" src="/img/uniPet.png" alt="" width="72" height="72">
+      </main>
+        <div class="card">
+          <div class="card-header">
+            <h6 class="display-6 text-center text-success">Escolha uma das opções!</h6>
+          </div>
+          <div class="card-body text-center mt-5">
+            <a href="/login" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-bar-left" style="font-size: 1.5rem;"></i>Voltar para o Login
+            </a>
+            <hr>
+            <a href="/" class="btn btn-outline-success">
+                <i class="bi bi-arrow-bar-left" style="font-size: 1.5rem;"></i> Voltar para o Menu
+            </a>
+          </div>
+        </div>
+    </body>
+  <%- include('../../../partials/users/footer.ejs') %>
+  <script>
+    alert("Ocorreu um erro em seu cadastro !");
+  </script>

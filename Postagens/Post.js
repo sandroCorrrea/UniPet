@@ -12,6 +12,6 @@ const Post = connection.define('postagens', {
     },
 });
 
-// Post.sync({force: false});
+Post.sync({force: false});
 
 module.exports = Post;

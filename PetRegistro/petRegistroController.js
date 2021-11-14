@@ -1,16 +1,17 @@
-const express = require('express');
-const router  = express.Router();
-const Pet     = require('./Pet');
+const express   = require('express');
+const router    = express.Router();
+const Pet       = require('./Pet');
+const adminAuth = require('../middlewares/adminAuth');
 
-router.get('/admin' , (req , res)=>{
+router.get('/admin', adminAuth, (req , res)=>{
    res.render('admin/pets/index');
 });
 
-router.get('/admin/new', (req, res) => {
+router.get('/admin/new', adminAuth,(req, res) => {
    res.render('admin/pets/new');
 });
 
-router.post('/admin/save' , (req , res)=>{
+router.post('/admin/save' , adminAuth,(req , res)=>{
 
    var {nameFancy, race, colorBody, cityOrigin, height, weight, dateBirth, age, castrated, health, note, sex} = req.body;
 
@@ -34,7 +35,7 @@ router.post('/admin/save' , (req , res)=>{
    });
 });
 
-router.get('/admin/show', (req, res) => {
+router.get('/admin/show', adminAuth,(req, res) => {
 
    Pet.findAll({
       order:[['id','DESC']]
@@ -47,7 +48,7 @@ router.get('/admin/show', (req, res) => {
    });
 });
 
-router.post('/admin/delete', (req, res) => {
+router.post('/admin/delete', adminAuth,(req, res) => {
    var {id} = req.body;
 
    if (id != undefined){
@@ -70,7 +71,7 @@ router.post('/admin/delete', (req, res) => {
    
 });
 
-router.get('/admin/edit/:id', (req, res) => {
+router.get('/admin/edit/:id', adminAuth,(req, res) => {
    var {id} = req.params;
 
    if (isNaN(id)) {
@@ -91,7 +92,7 @@ router.get('/admin/edit/:id', (req, res) => {
    }
 });
 
-router.post('/admin/save/edit', (req, res) => {
+router.post('/admin/save/edit', adminAuth,(req, res) => {
 
    var {nameFancy, race, colorBody, cityOrigin, height, weight, dateBirth, age, castrated, health, note, sex} = req.body;
    var id = req.body.id;

@@ -1,0 +1,20 @@
+a{
+  text-decoration: none;
+}
+#navbarHeader{
+  background-color: forestgreen;
+}
+.main{
+  font-size: 20px;
+}
+li:hover{
+  background: #fffff026;
+}
+.navbar{
+  background-color: forestgreen;
+  color: black;
+}
+.petMain{
+  width: 50%;
+  height: 50%;
+}

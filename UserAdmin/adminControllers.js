@@ -1,13 +1,14 @@
-const express = require('express');
-const router  = express.Router();
-const Admin   = require('./Admin');
-const bcrypt = require('bcryptjs');
+const express   = require('express');
+const router    = express.Router();
+const Admin     = require('./Admin');
+const bcrypt    = require('bcryptjs');
+const adminAuth = require('../middlewares/adminAuth');
 
-router.get('/admin/user/new', (req, res) => {
+router.get('/admin/user/new', adminAuth,(req, res) => {
     res.render('admin/users/new');
 });
 
-router.post('/admin/userAdmin/save' , (req , res)=>{
+router.post('/admin/userAdmin/save' , adminAuth,(req , res)=>{
 
     var {nameAdmin, cpf, cep, rua, bairro, cidade, uf, sex, dateBirth, profession, acess, passwordAdmin, email, work, status} = req.body;
 
@@ -37,7 +38,7 @@ router.post('/admin/userAdmin/save' , (req , res)=>{
     });
 });
 
-router.get('/admin/userAdmin/show', (req, res) => {
+router.get('/admin/userAdmin/show',adminAuth, (req, res) => {
 
     Admin.findAll({
         order:[['id', 'DESC']]
@@ -50,7 +51,7 @@ router.get('/admin/userAdmin/show', (req, res) => {
     });
 });
 
-router.post('/admin/adminUser/delete', (req, res) => {
+router.post('/admin/adminUser/delete',adminAuth, (req, res) => {
     var {id} = req.body;
 
     if (id != undefined) {
@@ -70,7 +71,7 @@ router.post('/admin/adminUser/delete', (req, res) => {
     }
 });
 
-router.get('/admin/adminUser/edit/:id', (req, res) => {
+router.get('/admin/adminUser/edit/:id', adminAuth,(req, res) => {
     var {id} = req.params;
 
     if(isNaN(id)){
@@ -92,7 +93,7 @@ router.get('/admin/adminUser/edit/:id', (req, res) => {
     };
 });
 
-router.post('/admin/userAdmin/edit/save', (req, res) => {
+router.post('/admin/userAdmin/edit/save', adminAuth,(req, res) => {
 
     var {nameAdmin, cpf, cep, rua, bairro, cidade, uf, sex, dateBirth, profession, acess, passwordAdmin, email, work, status} = req.body;
     var {id} = req.body;

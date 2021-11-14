@@ -1,0 +1,144 @@
+<%- include('../../../partials/users/head.ejs') %>
+  <title>UniPet - Login</title>
+  <link rel="stylesheet" href="/css/login.css">
+  <%- include('../../../partials/users/head2.ejs') %>
+    <body>
+      <%- include('../../../partials/users/nav.ejs') %>
+      <main class="form-signin mt-5 text-center">
+        <form method="post" action="/authentication/login">
+          <img class="mb-4" src="/img/uniPet.png" alt="" width="72" height="72">
+          <h1 class="h3 mb-3 fw-normal">Login</h1>
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+            <label for="floatingInput">Email</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+            <label for="floatingPassword">Senha</label>
+          </div>
+          <button class="w-100 btn btn-lg btn-success" type="submit">Entrar</button>
+        </form>
+          <button class="w-100 btn btn-lg btn-primary mt-3" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Cadastrar</button>
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6 class="modal-title display-6 text-success" id="staticBackdropLabel">Realizar Cadastro <i class="bi bi-caret-left"></i></h6>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form method="post" action="/user/register">
+                    <div class="row g-2">
+                      <div class="col-md">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" name="primaryName" placeholder=" " required>
+                          <label>Primeiro Nome</label>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" name="secondaryName" placeholder=" " required>
+                          <label>Segundo Nome</label>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row g-2">
+                      <div class="col-md">
+                        <div class="form-floating">
+                          <input type="email" class="form-control" name="email" placeholder=" " required>
+                          <label>Email</label>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="form-floating">
+                          <input type="number" class="form-control" name="cep" placeholder=" " id="cep" size="10" maxlength="9" onblur="pesquisacep(this.value);" required>
+                          <label>CEP</label>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                      <div class="col-md">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" name="rua" placeholder=" " id="rua" size="60" id="bairro" size="40" required>
+                          <label>Rua</label>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" name="bairro" id="bairro" size="40" placeholder=" " required>
+                          <label>Bairro</label>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" name="cidade" id="cidade" size="40" placeholder=" " required>
+                          <label>Cidade</label>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                          <div class="form-floating">
+                            <input type="text" class="form-control" name="uf"  id="uf" size="2" placeholder=" " required>
+                            <label>Estado</label>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row g-3">
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input type="text" name="cpf" class="form-control" id="cpf" placeholder=" " required>
+                            <label>CPF</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="sex" required>
+                              <option selected disabled>Selecione um sexo:</option>
+                              <option value="0">Feminino</option>
+                              <option value="1">Masculino</option>
+                            </select>
+                            <label for="floatingSelect">Sexo</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input type="date" name="dateBirth" class="form-control" placeholder=" " required>
+                            <label>Data de Nascimento</label>
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row g-2">
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input type="password" name="password" class="form-control" placeholder=" " required>
+                            <label>Senha</label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                          <div class="form-floating">
+                            <input type="password" name="confirmPassword" class="form-control" placeholder=" " required>
+                            <label>Confirme sua senha</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-grid gap-2 mx-auto">
+                      <button class="btn btn-success">Cadastrar</button>
+                    </div><br>
+                  </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle"></i> Fechar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>
+    <%- include('../../../partials/users/footer2.ejs') %>
+    </body>
+  <%- include('../../../partials/users/footer.ejs') %>

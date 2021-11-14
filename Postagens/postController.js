@@ -1,12 +1,13 @@
-const express = require('express');
-const router  = express.Router();
-const Post    = require('./Post');
+const express   = require('express');
+const router    = express.Router();
+const Post      = require('./Post');
+const adminAuth = require('../middlewares/adminAuth');
 
-router.get('/admin/new/post', (req, res) => {
+router.get('/admin/new/post', adminAuth,(req, res) => {
     res.render('admin/post/new');
 });
 
-router.post('/admin/save/post' , (req , res)=>{
+router.post('/admin/save/post' , adminAuth,(req , res)=>{
     var {title, body} = req.body;
 
     Post.create({
@@ -19,7 +20,7 @@ router.post('/admin/save/post' , (req , res)=>{
     });
 });
 
-router.get('/admin/show/post', (req, res) => {
+router.get('/admin/show/post', adminAuth,(req, res) => {
     Post.findAll({
         order:[['id', 'DESC']]
     }).then(posts => {
@@ -35,7 +36,7 @@ router.get('/admin/show/post', (req, res) => {
     });
 });
 
-router.post('/admin/delete/post', (req, res) => {
+router.post('/admin/delete/post', adminAuth,(req, res) => {
     var {id} = req.body;
 
     if (!isNaN(id)) {
@@ -55,7 +56,7 @@ router.post('/admin/delete/post', (req, res) => {
     }
 }); 
 
-router.get('/admin/post/edit/:id', (req, res) => {
+router.get('/admin/post/edit/:id', adminAuth, (req, res) => {
     var {id} = req.params;
 
     if (isNaN(id)){
@@ -77,7 +78,7 @@ router.get('/admin/post/edit/:id', (req, res) => {
     }
 }); 
 
-router.post('/admin/edit/post', (req, res) => {
+router.post('/admin/edit/post', adminAuth,(req, res) => {
     var {title, body} = req.body;
     var id = req.body.id;
 
