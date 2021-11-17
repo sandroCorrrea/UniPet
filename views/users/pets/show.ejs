@@ -1,0 +1,33 @@
+<%- include('../../../partials/users/head.ejs') %>
+<title>UniPet - Ajuda</title>
+<link rel="stylesheet" href="/css/showPets.css">
+<%- include('../../../partials/users/head2.ejs') %>
+<body>
+    <%- include('../../../partials/users/nav.ejs') %>
+    <h2 class="pb-2 border-bottom fw-bold display-6 mt-5 text-success text-center">Pets Disponíveis !</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% pets.forEach(pet => { %>
+        <div class="col">
+          <a href="#">
+            <div class="card m-3">
+              <img src="/img/petSidebar.png" class="card-img-top imgPet" alt="...">
+              <div class="card-body text-dark">
+                <h6 class="card-title fw-bold display-6"><%=pet.nameFancy%> </h6>
+                <ul>
+                  <li>Raça    : <%= pet.race %> </li>
+                  <li>Altura  : <%= pet.height %> (cm)</li>
+                  <li>Peso    : <%= pet.weight %> (kg)</li>
+                  <% if(pet.sex == true){ %>
+                    <li>Sexo  : Masculino</li>
+                  <% }else{ %>
+                    <li>Sexo  : Feminino</li>
+                  <% } %> 
+                </ul>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% }) %> 
+    </div>
+</body>
+<%- include('../../../partials/users/footer.ejs') %>

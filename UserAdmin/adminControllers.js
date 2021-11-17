@@ -118,4 +118,9 @@ router.post('/admin/userAdmin/edit/save', adminAuth,(req, res) => {
     }
 }); 
 
+router.get('/admin/userAdmin/logout', (req, res) => {
+    req.session.users = undefined;
+    res.redirect('/login');
+});
+
 module.exports = router;

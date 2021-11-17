@@ -3,6 +3,7 @@ const router   = express.Router();
 const User     = require('./Main');
 const bcrypt   = require('bcryptjs');
 const Usuario  = require('../src/User');
+const Pet      = require('../PetRegistro/Pet');
 
 router.get('/', (req, res) => {
     res.render('users/main/index');
@@ -14,8 +15,6 @@ router.get('/help', (req, res) => {
 
 router.get('/login', (req, res) => {
     res.render('users/main/login');
-
-    req.flash("alert1", "res.send('<script>alert('A senha está incorreta')</script>');");
 }); 
 
 router.get('/erro1', (req, res) => {
@@ -104,5 +103,21 @@ router.get('/user/index', (req, res) => {
         nome: capitalized,
     });
 }); 
+
+router.get('/user/show', (req, res) => {    
+    Pet.findAll({
+        order:[['id', 'DESC']]
+    }).then(pets => {
+        if (pets != undefined) {
+            res.render('users/pets/show', {
+                pets: pets,
+            });
+        }else{
+            res.redirect('/user/show');
+        }
+    }).catch(erro => {
+        console.log(erro);
+    });
+});
 
 module.exports = router;

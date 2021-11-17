@@ -3,6 +3,7 @@ const express    = require('express');
 const app        = express();
 const bodyParser = require('body-parser');
 const sessions   = require('express-session');
+const multer     = require('multer');
 // ------------------------------------------------
 
 // ------------------------ CONEXÕES USADAS (BD E ROTAS)
@@ -20,8 +21,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(sessions({
     secret: "$2a$10$s72A4RAOwByy/P.PPc1Nd.YLJRfiYXh5ibVsAJ5v24A8TiVTYdXLi",
-    cookie: {maxAge: 900000},
+    cookie: {maxAge: 9000000},
 }));
+const upload = multer({dest: "uploads/"});
 // ------------------------------------------------
 
 // ------------------------ AUTENTICAÇÃO COM O BD

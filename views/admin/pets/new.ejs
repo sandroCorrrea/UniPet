@@ -23,7 +23,16 @@
             </div>
             <div class="card-body">
                 <fieldset>
-                    <form method="post" action="/admin/save" onsubmit="confirmPet()">
+                    <form method="post" action="/admin/save" onsubmit="confirmPet()" enctype="multipart/form-data">
+                        <div class="containerImg">
+                            <div class="max-width">
+                                <div class="imageContainer">
+                                    <img src="/img/camera.png" alt="Selecione uma imagem" id="imgPhoto">
+                                </div>
+                            </div>
+                        </div>
+                        <input class="form-control" type="file" name="petImg" accept="image/*" id="imgUpload" required>
+                        <br>
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating">

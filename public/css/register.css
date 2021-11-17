@@ -2,3 +2,38 @@ h6{
     color: forestgreen;
     text-align: center;
 }
+/* EXIBIÇÃO DE IMAGEM */
+
+input[type='file'] {
+    display: none;
+}
+
+.max-width {
+    max-width: 500px;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#imgPhoto {
+    margin-top: 10%;
+    height: 200px;
+    width: 200px;
+    padding:10px;
+    background-color: #eee;
+    border: 5px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+#imgPhoto:hover{
+    background-color: rgb(180, 180, 180);
+    border: 5px solid #111;
+}
+.containerImg img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

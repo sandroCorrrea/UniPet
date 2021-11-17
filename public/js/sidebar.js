@@ -108,3 +108,24 @@ var pesquisacep = (valor) => {
   }
 };
 // -------------------------------- FIM DA VALIDAÇÃO DE CEP POR MEIO DE API
+
+// -------------------------------- UPLOAD DE FOTO
+'use strict'
+
+let photo = document.getElementById('imgPhoto');
+let file  = document.getElementById('imgUpload');
+
+photo.addEventListener('click', () => {
+    file.click();
+});
+
+file.addEventListener('change', (event) => {
+  let reader = new FileReader();
+  reader.onload = () => {
+    photo.src = reader.result;
+  }
+
+  reader.readAsDataURL(file.files[0]);
+});
+
+// -------------------------------- FIM UPLOAD DE FOTO
