@@ -4,18 +4,22 @@ const Pet       = require('./Pet');
 const multer    = require('multer');
 const path      = require('path');
 const adminAuth = require('../middlewares/adminAuth');
+const { json } = require('body-parser');
 
-// --- CONFIGURANDO UPLOAD
+// ---------- CONFIGURANDO UPLOAD DE IMAGENS
+
 const storage = multer.diskStorage({
-   destination: function (req, file, cb) {
-      cb(null, "public/uploads/");
+   destination: function(req, file, cb){
+      cb(null, "public/img", )
    },
    filename: function(req, file, cb){
-      cb(null, file.originalname + Date.now() + path.extname(file.originalname));
+      cb(null, file.originalname.replace(".", "") + Date.now() + path.extname(file.originalname));
    }
-})
-const upload    = multer({storage});
-// --- CONFIGURANDO UPLOAD
+});
+
+const upload  = multer({storage});
+
+// --------------- FIM DAS CONFIGURAÇÕES
 
 router.get('/admin', adminAuth, (req , res)=>{
    res.render('admin/pets/index');
@@ -25,9 +29,11 @@ router.get('/admin/new', adminAuth,(req, res) => {
    res.render('admin/pets/new');
 });
 
-router.post('/admin/save',upload.single("petImg"), adminAuth,(req , res)=>{
+router.post('/admin/save', upload.single("petImg"), adminAuth,(req , res)=>{
 
    var {nameFancy, race, colorBody, cityOrigin, height, weight, dateBirth, age, castrated, health, note, sex} = req.body;
+
+   var img = req.file.filename;
 
    Pet.create({
       nameFancy : nameFancy,
@@ -42,6 +48,7 @@ router.post('/admin/save',upload.single("petImg"), adminAuth,(req , res)=>{
       health    : health,
       sex       : sex,
       note      : note,
+      petImg    : img,
    }).then(() => {
       res.redirect('/admin/new');
    }).catch(erro => {

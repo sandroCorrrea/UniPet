@@ -24,6 +24,15 @@
             <div class="card-body">
                 <fieldset>
                     <form method="post" action="/admin/save/edit" onsubmit="editPet()">
+                        <div class="containerImg">
+                            <div class="max-width">
+                                <div class="imageContainer">
+                                    <img src="/img/<%=pets.petImg%>" alt="Selecione uma imagem" id="imgPhoto">
+                                </div>
+                            </div>
+                        </div>
+                        <input class="form-control" type="file" name="petImg" accept="image/*" id="imgUpload" disabled required>
+                        <br>
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating">

@@ -1,5 +1,5 @@
 <%- include('../../../partials/users/head.ejs') %>
-<title>UniPet - Ajuda</title>
+<title>UniPet - Adoção</title>
 <link rel="stylesheet" href="/css/showPets.css">
 <%- include('../../../partials/users/head2.ejs') %>
 <body>
@@ -10,7 +10,7 @@
         <div class="col">
           <a href="#">
             <div class="card m-3">
-              <img src="/img/petSidebar.png" class="card-img-top imgPet" alt="...">
+              <img src="/img/<%=pet.petImg%> " class="card-img-top imgPet" alt="Dog para Adoção">
               <div class="card-body text-dark">
                 <h6 class="card-title fw-bold display-6"><%=pet.nameFancy%> </h6>
                 <ul>

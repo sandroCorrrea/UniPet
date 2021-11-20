@@ -50,6 +50,10 @@ const Pet = database.define('pets', {
         type: sequelize.TEXT,
         allowNull: false,
     },
+    petImg:{
+        type: sequelize.STRING(120),
+        allowNull: false,
+    },
 });
 
 Pet.sync({force: false});

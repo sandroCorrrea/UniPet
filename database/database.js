@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 /* ----------------------------- CONEXÃO COM O BANCO DE DADOS LOCAL */
-// LINK: https://unipet-projeto.herokuapp.com/
+//LINK: https://unipet-projeto.herokuapp.com/
 // const connectionDatabase = new Sequelize('uni_pet', 'root', 'scrj123456', {
 //     host:     'localhost',
 //     dialect:  'mysql',

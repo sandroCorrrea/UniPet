@@ -23,7 +23,6 @@ app.use(sessions({
     secret: "$2a$10$s72A4RAOwByy/P.PPc1Nd.YLJRfiYXh5ibVsAJ5v24A8TiVTYdXLi",
     cookie: {maxAge: 9000000},
 }));
-const upload = multer({dest: "uploads/"});
 // ------------------------------------------------
 
 // ------------------------ AUTENTICAÇÃO COM O BD
