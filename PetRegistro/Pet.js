@@ -56,6 +56,6 @@ const Pet = database.define('pets', {
     },
 });
 
-Pet.sync({force: false});
+// Pet.sync({force: false});
 
 module.exports = Pet;

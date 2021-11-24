@@ -1,0 +1,26 @@
+<%- include('../../../partials/users/head.ejs') %>
+  <title>UniPet - Postagem</title>
+  <link rel="stylesheet" href="/css/postUser.css">
+  <%- include('../../../partials/users/head2.ejs') %>
+    <body>
+      <%- include('../../../partials/users/nav.ejs') %>
+      <div class="container mt-5">
+          <h6 class="display-6 text-center title">Veja a seguir as novidades no mundo dos Pets!</h6>
+          <hr>
+            <div class="col d-flex justify-content-center">
+                <% posts.forEach(post => { %>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <h6 class="display-6 text-center"><%=post.title%><h6>
+                        </div>
+                        <div class="card-body">
+                            <%-post.body%> 
+                        </div>
+                    </div>
+                    <hr>
+                <% }) %> 
+            </div>
+        </div>
+    <%- include('../../../partials/users/footer2.ejs') %>
+    </body>
+  <%- include('../../../partials/users/footer.ejs') %>

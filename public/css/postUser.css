@@ -1,0 +1,12 @@
+.card, .card-header, .card-body{
+    background-color: transparent;
+    border: none;
+    width: 80%;
+}
+.title{
+    color: forestgreen;
+}
+.card-body{
+    max-width: 100%;
+    width: 100%;
+}

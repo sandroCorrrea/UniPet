@@ -4,6 +4,9 @@ const User     = require('./Main');
 const bcrypt   = require('bcryptjs');
 const Usuario  = require('../src/User');
 const Pet      = require('../PetRegistro/Pet');
+const Admin    = require('../UserAdmin/Admin');
+const userAuth = require('../middlewares/userAuth');
+const Post    = require('../Postagens/Post');
 
 router.get('/', (req, res) => {
     res.render('users/main/index');
@@ -66,41 +69,58 @@ router.post('/user/register', (req, res) => {
 router.post('/authentication/login', (req, res) => {
     var {email, password} = req.body;
 
-    User.findOne({
+    Admin.findOne({
         where: {email: email}
-    }).then(users => {
-        if (users != undefined) {
-            var confirmPassword = bcrypt.compareSync(password, users.password);
-            if(confirmPassword){
-                req.session.users = {
-                    id:            users.id,
-                    email:         users.email,
-                    primeiroNome:  users.primaryName,
-                    segundoNome:   users.secondaryName,
+    }).then(admins => {
+        if (admins != undefined){
+            var compPassword = bcrypt.compareSync(password, admins.passwordAdmin);
+            if (compPassword) {
+                req.session.admins = {
+                    id  : admins.id,
+                    name: admins.nameAdmin,
+                    email: admins.email,
                 }
-                if(email == "morais.igor4@gmail.com" || email == "alexiafernandes94@gmail.com" || email== "luccavitalc@gmail.com" || email=="jsandro800@gmail.com"){
-                    res.redirect('/admin');
-                }else{
-                    res.redirect('/user/index');    
-                }
+                res.redirect('/admin');
             }else{
-                res.redirect('/erro1');
+                res.redirect("/erro1");
             }
         }else{
-            res.redirect('/erro1');
+            User.findOne({
+                where:{email: email}
+            }).then(users => {
+                if (users != undefined) {
+                    var compPasswordUser = bcrypt.compareSync(password, users.password);
+                    if(compPasswordUser){
+                        req.session.users = {
+                            id: users.id,
+                            name: users.primaryName,
+                            email: users.email,
+                        }
+                        res.redirect('/user/index');
+                    }else{
+                        // ERROU A SENHA
+                        res.redirect('/erro1');
+                    }
+                }else{
+                    // NÃO POSSUI CADASTRO
+                    res.redirect('/erro1');
+                }
+            }).catch(erro => {
+                console.log(erro);
+            })
         }
     }).catch(erro => {
         console.log(erro);
     });
 });
 
-router.get('/user/index', (req, res) => {
+router.get('/user/index', userAuth, (req, res) => {
 
-    var primeiroNome = req.session.users.primeiroNome;
+    var primeiroNome = req.session.users.name;
     var capitalized  = primeiroNome[0].toLocaleUpperCase() + primeiroNome.substr(1);
 
     res.render('users/login/index', {
-        nome: capitalized,
+        capitalized: capitalized,
     });
 }); 
 
@@ -118,6 +138,25 @@ router.get('/user/show', (req, res) => {
     }).catch(erro => {
         console.log(erro);
     });
+});
+
+router.get('/post', (req, res) => {
+
+    Post.findAll().then(posts => {
+        if (posts != undefined) {
+            res.render('users/main/posts', {
+                posts: posts,
+            });
+        }else{
+            res.redirect('/');
+        }
+    }).catch(erro => {
+        console.log(erro);
+    });
+});
+
+router.get('/adocao/pet', (req, res) => {
+    res.render('users/pets/contract');
 });
 
 module.exports = router;

@@ -1,6 +1,6 @@
 <%- include('../../../partials/users/head.ejs') %>
     <title>UniPet</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/loginUser.css">
     <%- include('../../../partials/users/head2.ejs') %>
         <body>
             <%- include('../../../partials/users/nav.ejs') %>
@@ -8,10 +8,61 @@
                 <section class="py-5 text-center container">
                     <div class="row py-lg-5">
                         <div class="col-lg-6 col-md-8 mx-auto">
-                            <h1 class="fw-light">Seja Bem Vindo <%= nome %> ! </h1>
+                            <h1 class="fw-light">Olá <%=capitalized%> seja bem vindo á UniPet!</h1>
                         </div>
                     </div>
                 </section>
             </main>
+            <div class="container px-4 py-5" id="custom-cards">
+                <h2 class="pb-2 border-bottom title">Funcionalidades</h2>
+            
+                <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+                  <div class="col">
+                    <a href="/user/show">
+                        <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg card1" style="background-image: url('/img/card1.jpg');">
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                              <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Adotar Pets</h2>
+                              <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">
+                                  <img src="/img/guide-dog.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                    </a>
+                  </div>
+            
+                  <div class="col">
+                    <a href="/post">
+                      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('/img/card2.jpg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Verificar Postagens da comunidade</h2>
+                          <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                              <img src="/img/guide-dog.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+            
+                  <div class="col">
+                        <a href="/help">
+                            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('/img/card3.jpg');">
+                                <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Ajuda na adoção de Pets</h2>
+                                <ul class="d-flex list-unstyled mt-auto">
+                                    <li class="me-auto">
+                                    <img src="/img/guide-dog.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                                    </li>
+                                </ul>
+                                </div>
+                            </div>
+                        </a>
+                  </div>
+                </div>
+            </div>
+            <%- include('../../../partials/users/footer2.ejs') %>
         </body>
 <%- include('../../../partials/users/footer.ejs') %>

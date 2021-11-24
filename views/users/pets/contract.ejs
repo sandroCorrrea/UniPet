@@ -1,0 +1,70 @@
+<%- include('../../../partials/users/head.ejs') %>
+  <title>UniPet - Contrato</title>
+  <link rel="stylesheet" href="/css/contract.css">
+  <%- include('../../../partials/users/head2.ejs') %>
+    <body>
+        <%- include('../../../partials/users/nav.ejs') %>
+        <form onsubmit="eventEmail()">
+            <div class="container my-5">
+                <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                    <h1 class="display-4 fw-bold lh-1">Termos de Contrato -UniPet</h1>
+                    <p class="lead">A seguir temos o nosso contrato, léia atentamente cada clásula do nosso contrato e certifique-se que está apto a adotar um de nossos pets.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">Ler Contrato</button>
+                    <a type="button" href="/user/show" class="btn btn-outline-success btn-lg px-4">Voltar</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+                    <img class="rounded-lg-3" src="/img/guide-dog.png" alt="" width="320">
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h6 class="modal-title display-6 text-success" id="exampleModalLabel">Termos do Contrato <i class="bi bi-book"></i></h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <ul>
+                        <li>
+                            Por meio do contrato de adoção de animal de estimação, uma pessoa, denominada adotante, pode adotar um animal de estimação (ou pet) de outra pessoa, denominada doador.
+                            Apesar de receber o nome de "contrato de adoção", este contrato tem natureza de contrato de doação, já que, pelas leis brasileiras, os animais são considerados "coisas", sendo, portanto, propriedade de seus respectivos donos.
+                        </li>
+                        <br>
+                        <li>
+                            Este contrato pode ser utilizado para a adoção de qualquer tipo de animal de estimação. Os animais silvestres ou aqueles protegidos por normas emanadas pelo Poder Público não podem ser objeto deste contrato. Dentre outros, é possível a adoção de cachorros, gatos, coelhos, galinhas e aves domésticos, sendo que tanto doador quanto adotante podem ser pessoas físicas ou jurídicas, incluindo associações.
+                        </li>
+                        <br>
+                        <li>a obrigatoriedade de o adotante providenciar que o animal seja vacinado ou submetido a outros cuidados específicos;</li>
+                        <br>
+                        <li>a obrigatoriedade de o adotante zelar pela saúde e pelo bem-estar do animal;</li>
+                        <br>
+                        <li>a possibilidade (ou a proibição) de o adotante doar ou vender o animal de estimação a terceiro;</li>
+                        <br>
+                        <li>a obrigatoriedade de o doador entregar o animal ao adotante na data combinada;</li>
+                        <br>
+                        <li>a obrigatoriedade de o doador fornecer ao adotante todas as informações de que dispuser sobre a saúde do animal.</li><br>
+                        <li>Apesar de não ser regulamentado em lei, este contrato visa garantir maior segurança jurídica às suas partes, estabelecendo de forma clara, em um único documento, as obrigações a que cada uma delas está submetida.</li>
+                    </ul>
+                    <hr>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" required>
+                        <label class="form-check-label" for="flexSwitchCheckChecked"><b>Concordo com os Termos.</b></label>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Avançar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </form>
+        <%- include('../../../partials/users/footer2.ejs') %>
+    </body>
+  <%- include('../../../partials/users/footer.ejs') %>

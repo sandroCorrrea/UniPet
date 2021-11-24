@@ -3,7 +3,6 @@ const express    = require('express');
 const app        = express();
 const bodyParser = require('body-parser');
 const sessions   = require('express-session');
-const multer     = require('multer');
 // ------------------------------------------------
 
 // ------------------------ CONEXÕES USADAS (BD E ROTAS)

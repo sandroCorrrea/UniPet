@@ -56,3 +56,7 @@ var pesquisacep = (valor) => {
 $(function() {
   $("#cpf").mask('000.000.000-00')
 });
+
+var eventEmail = () => {
+  alert("Verifique sua caixa de e-mail!");
+}
